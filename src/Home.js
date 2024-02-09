@@ -76,7 +76,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <div className='card'>
+      <div className='card1'>
         {mode === 'login' && (
           <form className='login-form' onSubmit={handleLoginSubmit}>
             <h1>Login</h1>

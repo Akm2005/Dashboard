@@ -5,12 +5,18 @@
     height: 100vh;
   }
   
-  .card {
+  .card1 {
     max-width: 400px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: rgb(237, 190, 190);
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 200px;
   }
   
   form {
