@@ -6,19 +6,19 @@
     background-color: rgb(239, 225, 186);
     padding: 10px;
 }
-h1{
-    font-size: 25px;
-}
+
 .btnmain{
     border: none;
     width: 70px;
     height: 40px;
     border-radius: 10px;
+    
 }
 button{
     border: none;
     width: 14%;
     border-radius: 10px;
+    background-color: rgb(237, 190, 190);
     
 }
 .cbtn{
@@ -27,6 +27,7 @@ button{
     width: 33%;
     height: 3rem;
     border-radius: 10px;
+    
 }
 .cform{
     margin: 1%;
@@ -53,7 +54,7 @@ input{
     outline: none;
     border: none;
     border-radius: 5px;
-
+    
 }
 .main{
     display: flex;
@@ -82,23 +83,25 @@ input{
 
 @media only screen and (max-width: 767px) {
     .nav {
-        min-width: 520px;
+        width: 110%;
         flex-direction: row;
         padding: 5px; /* Padding ko adjust kiya */
     }
-    .leftbar,
-    .maincontent {
-        width: 100%;
+    .leftbar {
+        width: 30%;
         height: auto; /* Height ko auto par set kiya */
-        margin: 10px 0; /* Margin ko update kiya */
+       
     }
-    .leftbar,
     .maincontent {
-        margin-left: 0;
+        width: 72%;
+       
     }
     .main{
         display: flex;
         justify-content: space-between;
+    }
+    .btnmain{
+        visibility: hidden;
     }
 }
 
