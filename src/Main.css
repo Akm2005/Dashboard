@@ -1,0 +1,101 @@
+.nav{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(239, 225, 186);
+    padding: 10px;
+}
+h1{
+    font-size: 25px;
+}
+.btnmain{
+    border: none;
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+}
+button{
+    border: none;
+    width: 14%;
+    border-radius: 10px;
+    
+}
+.cbtn{
+    margin-top: 1%;
+    border: none;
+    width: 33%;
+    height: 3rem;
+    border-radius: 10px;
+}
+.cform{
+    margin: 1%;
+}
+input{
+    margin-top: 15px;
+}
+
+.leftbar{
+    width: 22%;
+    height: 100%;
+    min-height: 490px;
+    background-color: rgb(239, 225, 186);
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 7px;
+    border-radius: 7px;
+    
+}
+.btnleft{
+    width: 100%;
+    height: 85px;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+}
+.main{
+    display: flex;
+    overflow: none;
+    
+}
+.maincontent{
+    width: 75.3%;
+    height: 100%;
+    background-color: rgb(239, 225, 186);
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 7px;
+    border-radius: 7px;
+
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+    .nav {
+        width: 100%;
+        flex-direction: column;
+        padding: 5px; /* Padding ko adjust kiya */
+    }
+    .leftbar,
+    .maincontent {
+        width: 100%;
+        height: auto; /* Height ko auto par set kiya */
+        margin: 10px 0; /* Margin ko update kiya */
+    }
+    .leftbar,
+    .maincontent {
+        margin-left: 0;
+    }
+}
+
+

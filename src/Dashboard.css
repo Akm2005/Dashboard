@@ -1,0 +1,15 @@
+.dashboard-container {
+    display: flex;
+     flex-wrap: wrap;
+  }
+  
+  .card {
+   flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    min-width: 200px;
+  }
+  
