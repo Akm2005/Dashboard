@@ -1,60 +1,96 @@
-import React, { useState, useEffect } from 'react';
-import './Dashboard.css'; // Import CSS file for styling
+import React, { useState, useEffect } from "react";
+import "./Dashboard.css"; // Import CSS file for styling
 
 const Dashboard = () => {
   const [userCount, setUserCount] = useState(null);
+  const [currentDate, setCurrentDate] = useState(null);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [api, setApi] = useState(null);
+  const [geolocationSupported, setGeolocationSupported] = useState(true); // Default to true
 
   useEffect(() => {
-    // Fetch data from the API
-    fetch('https://655500aa63cafc694fe75243.mockapi.io/aman')
-      .then(response => response.json())
-      .then(data => {
+    // Check if geolocation is supported by the browser
+    if (!navigator.geolocation) {
+      setGeolocationSupported(false);
+      return; // Exit the useEffect
+    }
+
+    // Fetch data from the API for user count
+    fetch("https://655500aa63cafc694fe75243.mockapi.io/aman")
+      .then((response) => response.json())
+      .then((data) => {
         // Set the user count
         setUserCount(data.length);
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
+
+    // Get user's location
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLatitude(latitude);
+        setLongitude(longitude);
+        setApi(
+          `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d${longitude}!2d72.8562046!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1707559502584!5m2!1sen!2sin`
+        );
+      },
+      (error) => {
+        console.error("Error getting geolocation:", error);
+      }
+    );
+
+    // Set current date
+    const currentDate = new Date().toLocaleDateString();
+    setCurrentDate(currentDate);
   }, []);
 
   return (
-    <div className="dashboard-container"> 
-     <div className="card">
-       
+    <div className="dashboard-container">
+      <div className="card">
         <h3>Number of Users</h3>
-        <p>{userCount !== null ? userCount : 'Loading...'}</p>
+        <p>{userCount !== null ? userCount : "Loading..."}</p>
+      </div>
+      {geolocationSupported ? (
+        <div className="card">
+          <h3>Location</h3>
+          <p>
+            {latitude !== null && longitude !== null
+              ? `${latitude}, ${longitude}`
+              : "Loading..."}
+          </p>
+        </div>
+      ) : (
+        <div className="card">
+          <h3>Location</h3>
+          <p>Geolocation is not supported by this browser.</p>
+        </div>
+      )}
+      <div className="card">
+        <h3>Current Date</h3>
+        <p>{currentDate !== null ? currentDate : "Loading..."}</p>
       </div>
       <div className="card">
-        <h2>Card 1</h2>
-        <p> Card 1</p>
+        <h3>Time</h3>
+        <p>{new Date().toLocaleTimeString()}</p>
       </div>
-      <div className="card">
-        <h2>Card 2</h2>
-        <p> Card 2</p>
-      </div>
-      <div className="card">
-        <h2>Card 3</h2>
-        <p> Card 3</p>
-      </div>
-      <div className="card">
-        <h2>Card 4</h2>
-        <p> Card 4</p>
-      </div>
-      <div className="card">
-       
-        <h2>Card 5</h2>
-        <p> Card 5</p>
-      </div>
-      <div className="card">
-        <h2>Card 6</h2>
-        <p> Card 6</p>
-      </div>
-      <div className="card">
-        <h2>Card 7</h2>
-        <p> Card 7</p>
-      </div>
-
-     
+      {api && (
+        <div className="card">
+          <h3>Location </h3>
+          <iframe
+            title="location"
+            src={api}
+            width="100%"
+            height="300px"
+            style={{ border: "0" }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      )}
     </div>
   );
 };
