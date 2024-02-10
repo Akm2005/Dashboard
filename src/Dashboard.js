@@ -33,9 +33,7 @@ const Dashboard = () => {
         const { latitude, longitude } = position.coords;
         setLatitude(latitude);
         setLongitude(longitude);
-        setApi(
-          `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d${longitude}!2d72.8562046!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1707559502584!5m2!1sen!2sin`
-        );
+        setApi(`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d120640.46327888571!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1707567346164!5m2!1sen!2sin&zoom=20px`);
       },
       (error) => {
         console.error("Error getting geolocation:", error);
@@ -95,4 +93,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard; 
